@@ -1,0 +1,12 @@
+@use "colors" as *;
+
+/* makes sizing simpler */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $background-color;
+}
