@@ -8,19 +8,16 @@ const removeEmployeeFunction = (employees, displayEmployees) => {
   if (employeeName) {
     // Find the index of the employee with the given name
     const index = employees.findIndex(
-      employee => employee.name === employeeName
+      employee => employee.name.toLowerCase() === employeeName
     );
 
-    //
     if (index === -1) {
       alert("Employee not found");
-      // return false if the employee was not found
       return false;
     } else {
       employees.splice(index, 1);
       localStorage.setItem("employees", JSON.stringify(employees));
       displayEmployees();
-      // return true if the employee was successfully removed
       return true;
     }
   }
