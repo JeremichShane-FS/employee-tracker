@@ -9,7 +9,7 @@ const generateRemoveEmployeeForm = removeEmployee => {
   // Create label and input for name
   const label = createEl("label");
   label.htmlFor = "name";
-  label.textContent = "Name:";
+  label.textContent = "Employee: (Name or ID)";
   const textInput = createEl("input");
   textInput.type = "text";
   textInput.id = "name";

@@ -1,14 +1,16 @@
 import { getId } from "../utils/domHelpers.js";
 
-// The removeEmployeeFunction function takes in two parameters: employees and displayEmployees and returns a function that removes an employee from the employees array and updates the display of employees.  Normally I would use a unique identifier like an UUID or some other unique ID type to remove an employee, but per instructions of this assignment, I am using the employee's name to remove the employee.
+// This function removes an employee from the employees array and updates the display of employees.  Employee can be removed by name or ID.
 const removeEmployeeFunction = (employees, displayEmployees) => {
   const nameElement = getId("name");
   const employeeName = nameElement.value.toLowerCase();
+  const employeeInput = nameElement.value;
 
   if (employeeName) {
-    // Find the index of the employee with the given name
+    // Find the index of the employee with the given namel
     const index = employees.findIndex(
-      employee => employee.name.toLowerCase() === employeeName
+      (employee, id) =>
+        id + 1 == employeeInput || employee.name.toLowerCase() == employeeName
     );
 
     if (index === -1) {
