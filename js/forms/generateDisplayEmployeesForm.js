@@ -4,9 +4,8 @@ import { createEl, getId } from "../utils/domHelpers.js";
 const generateDisplayEmployeesForm = displayEmployees => {
   const form = createEl("form");
   form.id = "displayEmployeesForm";
-  const displayButton = createEl("button");
+  const displayButton = createEl("button", "btn");
   displayButton.textContent = "Hide Employees";
-
   let buttonState = localStorage.getItem("buttonState");
   let shouldDisplay = localStorage.getItem("shouldDisplay") === "true";
 
@@ -15,17 +14,12 @@ const generateDisplayEmployeesForm = displayEmployees => {
   } else if (buttonState === "display") {
     displayButton.textContent = "Display All Employees";
   }
-
+  // Get employeeList element and set display to none if shouldDisplay is false in local storage or true if shouldDisplay is true in local storage
   const employeeList = getId("output");
-
-  // Set initial display style of employeeList based on shouldDisplay value in local storage
   employeeList.style.display = shouldDisplay ? "block" : "none";
-
   displayButton.addEventListener("click", e => {
     e.preventDefault();
-
     shouldDisplay = employeeList.style.display !== "none";
-
     employeeList.style.display = shouldDisplay ? "none" : "block";
     localStorage.setItem("shouldDisplay", !shouldDisplay ? "true" : "false");
 

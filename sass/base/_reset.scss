@@ -1,3 +1,5 @@
+@use "colors" as *;
+
 /* remove default spacing */
 /* force styling of type through styling, rather than elements */
 
@@ -20,4 +22,11 @@ svg,
 video {
   display: block;
   max-width: 100%;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: $gray-100;
 }

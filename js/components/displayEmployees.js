@@ -5,6 +5,7 @@ const displayEmployeesFunction = employees => {
   output.innerHTML = "";
 
   const table = createEl("table");
+  table.classList.add("styled-table");
 
   const headers = ["ID", "Name", "Age", "Salary", "Hours", "Pay", "FT/PT"];
   const thead = createEl("thead");

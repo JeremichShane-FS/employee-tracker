@@ -16,7 +16,7 @@ const generateRemoveEmployeeForm = removeEmployee => {
   textInput.name = "name";
 
   // Create submit input
-  const submitInput = createEl("input");
+  const submitInput = createEl("input", "btn");
   submitInput.type = "submit";
   submitInput.id = "removeEmployeeSubmit";
   submitInput.value = "Submit";
@@ -30,6 +30,8 @@ const generateRemoveEmployeeForm = removeEmployee => {
   submitInput.addEventListener("click", e => {
     e.preventDefault();
     removeEmployee();
+    form.reset();
+    textInput.focus();
   });
 
   return form;

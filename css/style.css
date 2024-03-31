@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: center;
+}
+
 /* makes sizing simpler */
 *,
 *::before,
@@ -5,9 +14,19 @@
   box-sizing: border-box;
 }
 
+main {
+  min-width: 50rem;
+}
+
 body {
   background-color: #f8f9fa;
   color: #212529;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  font-family: "Lato", sans-serif;
 }
 
 /* remove default spacing */
@@ -30,6 +49,138 @@ svg,
 video {
   display: block;
   max-width: 100%;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: #f8f9fa;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: #9c88ff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  color: #f8f9fa;
+  border: 0;
+  display: block;
+  margin: 0.625rem 0 1.875rem;
+  padding: 0.625rem;
+  width: 100%;
+}
+
+.btn:focus,
+.delete-btn:focus {
+  border-color: #0077b6;
+}
+
+.btn:hover {
+  background-color: #7f69ff;
+}
+
+label {
+  display: inline-block;
+  margin: 0.625rem 0;
+}
+
+input[type=text],
+input[type=number],
+select {
+  border: 1px solid #dee2e6;
+  border-radius: 2px;
+  display: block;
+  padding: 0.625rem;
+  width: 100%;
+}
+
+select {
+  background-color: #e9ecef;
+  outline: 0;
+}
+
+select:focus {
+  border-color: #212529;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 31.25rem;
+}
+
+#employeeForm {
+  margin-top: 1.25rem;
+}
+
+#output {
+  margin-top: 4rem;
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 50rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: #0077b6;
+  color: #f8f9fa;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 0.75rem 0.9375rem;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #e9ecef;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #0077b6;
+}
+
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+footer {
+  background-color: #0077b6;
+  text-align: center;
+  margin-top: 2rem;
+  width: 100%;
+}
+footer > p {
+  font-size: 1em;
+  padding: 1rem;
+  margin: 0;
+  color: #f8f9fa;
+}
+
+header {
+  background-color: #0077b6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+header > h1 {
+  font-size: 1em;
+  padding: 1rem;
+  margin: 0;
+  color: #f8f9fa;
+  text-align: left;
+  font-family: "Lato", sans-serif;
 }
 
 /*# sourceMappingURL=style.css.map */

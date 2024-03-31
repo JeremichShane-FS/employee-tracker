@@ -59,7 +59,7 @@ const generateAddEmployeeForm = addEmployee => {
   hoursInput.required = true;
 
   // Create submit button
-  const submitButton = createEl("input");
+  const submitButton = createEl("input", "btn");
   submitButton.type = "submit";
   submitButton.value = "Submit";
 
@@ -67,6 +67,8 @@ const generateAddEmployeeForm = addEmployee => {
   form.addEventListener("submit", e => {
     e.preventDefault();
     addEmployee();
+    form.reset();
+    nameInput.focus();
   });
 
   // Append all elements to form

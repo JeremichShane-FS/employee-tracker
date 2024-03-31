@@ -1,4 +1,6 @@
-$font-primary: "Roboto", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+$font-primary: "Lato", sans-serif;
 $font-size-primary: 1rem;
 $font-weight-regular: 400;
 $font-weight-bold: 700;
@@ -15,3 +17,11 @@ $heading-6-size: 1rem;
 $paragraph-size: $font-size-primary;
 $small-size: 0.875rem;
 $smaller-size: 0.75rem;
+
+h1 {
+  font-size: $heading-1-size;
+  letter-spacing: 1px;
+  line-height: $line-height-heading;
+  font-weight: $font-weight-bold;
+  text-align: center;
+}

@@ -1,0 +1,38 @@
+@use "../base" as *;
+
+label {
+  display: inline-block;
+  margin: 0.625rem 0;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  border: 1px solid $gray-300;
+  border-radius: 2px;
+  display: block;
+  padding: 0.625rem;
+  width: 100%;
+}
+
+select {
+  background-color: $gray-200;
+  outline: 0;
+}
+
+select:focus {
+  border-color: $gray-900;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 31.25rem;
+}
+
+#employeeForm {
+  margin-top: 1.25rem;
+}
+
+#output {
+  margin-top: 4rem;
+}
