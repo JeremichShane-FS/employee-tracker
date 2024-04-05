@@ -1,11 +1,7 @@
 import { createEl } from "../utils/domHelpers.js";
 
 // This function generates a form for editing an employee's information.  The form contains two input fields: one for the employee's number and one for the employee's pay rate. When the submit button is clicked, the editEmployee function is called.
-const generateEditEmployeeForm = (
-  editEmployee,
-  employeeName = "",
-  fromContextMenu = false
-) => {
+const generateEditEmployeeForm = (editEmployee, employeeName = "") => {
   const form = createEl("form");
   form.id = "editEmployeeForm";
 
@@ -17,6 +13,7 @@ const generateEditEmployeeForm = (
   inputEmployee.type = "text";
   inputEmployee.id = "name";
   inputEmployee.name = "name";
+  inputEmployee.required = true;
 
   // Create label and input for pay rate
   const labelPayRate = createEl("label");
@@ -26,6 +23,10 @@ const generateEditEmployeeForm = (
   inputPayRate.type = "number";
   inputPayRate.id = "payRate";
   inputPayRate.name = "payRate";
+  inputPayRate.min = "0";
+  inputPayRate.max = "100";
+  inputPayRate.step = "0.01";
+  inputPayRate.required = true;
 
   // Create submit button
   const submitInput = createEl("input", "btn");
@@ -41,13 +42,8 @@ const generateEditEmployeeForm = (
   form.appendChild(labelPayRate);
   form.appendChild(inputPayRate);
   form.appendChild(submitInput);
-
-  // if (!fromContextMenu) {
-  // inputEmployee.focus();
-  // }
-
   // Add event listener to the button
-  submitInput.addEventListener("click", e => {
+  form.addEventListener("submit", e => {
     e.preventDefault();
     editEmployee();
     form.reset();

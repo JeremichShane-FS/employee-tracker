@@ -1,5 +1,3 @@
-import { getId } from "../utils/domHelpers.js";
-
 // This function removes an employee from the employees array and updates the display of employees.  Employee can be removed by name or ID.
 const removeEmployeeFunction = (
   employees,

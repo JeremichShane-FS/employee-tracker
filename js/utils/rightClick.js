@@ -1,6 +1,4 @@
-import editEmployeeFunction from "../components/editEmployee.js";
 import removeEmployeeFunction from "../components/removeEmployee.js";
-import generateEditEmployeeForm from "../forms/generateEditEmployeeForm.js";
 
 const attachRightClickHandler = (elementId, appInstance = null) => {
   const { employees, displayEmployees } = appInstance;
