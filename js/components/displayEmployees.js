@@ -1,13 +1,19 @@
-import { createEl, getId } from "../utils/domHelpers.js";
+import { buildContextMenu } from "../forms/contextMenu.js";
+import { createEl, getId, on } from "../utils/domHelpers.js";
+import { attachRightClickHandler } from "../utils/rightClick.js";
 
-const displayEmployeesFunction = employees => {
+const displayEmployeesFunction = (employees, appInstance) => {
   const output = getId("output");
-  output.innerHTML = "";
+
+  while (output.firstChild) {
+    output.removeChild(output.firstChild);
+  }
 
   const table = createEl("table");
   table.classList.add("styled-table");
+  table.id = "employeesTable";
 
-  const headers = ["ID", "Name", "Age", "Salary", "Hours", "Pay", "FT/PT"];
+  const headers = ["ID", "Name", "Salary", "Hours", "Pay", "FT/PT"];
   const thead = createEl("thead");
   const headerRow = createEl("tr");
   headers.forEach(header => {
@@ -26,23 +32,40 @@ const displayEmployeesFunction = employees => {
         .split(" ")
         .map(word => word[0].toUpperCase() + word.slice(1))
         .join(" "),
-      employee.age,
-      employee.annualSalary,
+      employee.annualSalary.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      }),
       employee.hours,
-      employee.payRate,
+      employee.payRate.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      }),
       employee.employeeType,
     ];
     const tr = createEl("tr");
+    tr.id = `row-${employeeInfo[0]}`;
+    tr.dataset.employeeId = index + 1;
     employeeInfo.forEach(info => {
       const td = createEl("td");
       td.textContent = info;
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
+
+    // Attach context menu to row
+    if (!tr.dataset.hasContextMenu) {
+      window.onload = () => {
+        attachRightClickHandler(tr.id, appInstance);
+        tr.dataset.hasContextMenu = "true";
+      };
+    }
   });
   table.appendChild(tbody);
 
   output.appendChild(table);
+
+  buildContextMenu();
 };
 
 export default displayEmployeesFunction;

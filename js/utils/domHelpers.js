@@ -10,12 +10,13 @@ const query = selector => document.querySelector(selector);
 
 const getId = id => {
   const element = document.getElementById(id);
-  element.on = (e, handler) => {
-    if (e && handler) {
-      element.addEventListener(e, handler);
-    }
-    return element;
-  };
+  if (element) {
+    element.on = (e, handler) => {
+      if (e && handler) {
+        element.addEventListener(e, handler);
+      }
+    };
+  }
   return element;
 };
 

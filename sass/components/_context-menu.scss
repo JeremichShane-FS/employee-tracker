@@ -1,0 +1,27 @@
+@use "../base" as *;
+
+.context-menu {
+  position: absolute;
+  text-align: center;
+  background: $gray-100;
+  border: 1px solid $primary-color;
+}
+
+.context-menu ul {
+  padding: 0px;
+  margin: 0px;
+  min-width: 150px;
+  list-style: none;
+}
+
+.context-menu ul li {
+  padding-bottom: 7px;
+  padding-top: 7px;
+  border: 1px solid $primary-color;
+}
+
+.context-menu ul li:hover {
+  background: $button-hover;
+  color: $gray-100;
+  cursor: pointer;
+}

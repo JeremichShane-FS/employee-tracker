@@ -1,5 +1,4 @@
-import Manager from "../classes/manager.js";
-import PartTime from "../classes/partTime.js";
+import { Manager, PartTime } from "../classes/index.js";
 
 // Create an array of employees
 const employees = [

@@ -40,8 +40,7 @@ const generateAddEmployeeForm = addEmployee => {
   payRateInput.type = "number";
   payRateInput.id = "payRate";
   payRateInput.name = "payRate";
-  payRateInput.step = "1";
-  payRateInput.min = "1";
+  payRateInput.step = "0.01";
   payRateInput.max = "100";
   payRateInput.required = true;
 
@@ -74,6 +73,7 @@ const generateAddEmployeeForm = addEmployee => {
   // Append all elements to form
   form.appendChild(nameLabel);
   form.appendChild(nameInput);
+  nameInput.focus();
   form.appendChild(ageLabel);
   form.appendChild(ageInput);
   form.appendChild(payRateLabel);

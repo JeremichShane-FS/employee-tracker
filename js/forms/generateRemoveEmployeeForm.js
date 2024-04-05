@@ -2,6 +2,9 @@ import { createEl } from "../utils/domHelpers.js";
 
 // The generateRemoveEmployeeForm function returns a form with a text input field for the employee's name and a submit button.  When the submit button is clicked, the removeEmployee function is called.
 const generateRemoveEmployeeForm = removeEmployee => {
+  const existingForm = document.getElementById("removeEmployeeForm");
+  if (existingForm) existingForm.remove();
+
   const form = createEl("form");
   form.id = "removeEmployeeForm";
   form.className = "hidden";
@@ -29,7 +32,7 @@ const generateRemoveEmployeeForm = removeEmployee => {
   // Add event listener to the button
   submitInput.addEventListener("click", e => {
     e.preventDefault();
-    removeEmployee();
+    removeEmployee(textInput.value);
     form.reset();
     textInput.focus();
   });

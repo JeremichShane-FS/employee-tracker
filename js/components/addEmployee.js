@@ -1,5 +1,4 @@
-import Manager from "../classes/manager.js";
-import PartTime from "../classes/partTime.js";
+import { Manager, PartTime } from "../classes/index.js";
 import { getId } from "../utils/domHelpers.js";
 
 // The addEmployeeFunction function takes in two parameters: employees and displayEmployees and returns a function that adds an employee to the employees array and updates the display of employees.
@@ -13,7 +12,7 @@ const addEmployeeFunction = (employees, displayEmployees) => {
 
   // The handleSubmit function checks if the employee name already exists in the employees array. If it does, it increments the employee counter for that name and appends the counter to the name.
   const handleSubmit = () => {
-    const form = getId("addEmployeeForm"); // replace 'yourFormId' with the id of your form
+    const form = getId("addEmployeeForm");
     if (!form.checkValidity()) {
       form.reportValidity();
       return false;

@@ -22,6 +22,11 @@
 
 .styled-table tbody tr {
   border-bottom: 1px solid $gray-100;
+
+  &:hover:hover {
+    background-color: $button;
+    color: $gray-100;
+  }
 }
 
 .styled-table tbody tr:nth-of-type(even) {
@@ -30,9 +35,4 @@
 
 .styled-table tbody tr:last-of-type {
   border-bottom: 2px solid $primary-color;
-}
-
-.styled-table tbody tr.active-row {
-  font-weight: bold;
-  color: #009879;
 }

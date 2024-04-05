@@ -14,6 +14,7 @@ import {
 } from "./forms/index.js";
 import setCopyright from "./utils/copyright.js";
 import { getId } from "./utils/domHelpers.js";
+import { attachRightClickHandler } from "./utils/rightClick.js";
 
 class App {
   constructor() {
@@ -51,28 +52,38 @@ class App {
 
   addEmployee = () => {
     addEmployeeFunction(this.employees, this.displayEmployees);
-    // this.displayEmployees();
   };
 
-  removeEmployee = () => {
-    removeEmployeeFunction(this.employees, this.displayEmployees);
-    // this.displayEmployees();
+  removeEmployee = employeeIdOrName => {
+    removeEmployeeFunction(
+      this.employees,
+      this.displayEmployees,
+      employeeIdOrName
+    );
   };
   editEmployee = () => {
     editEmployeeFunction(this.employees, this.displayEmployees);
-    // this.displayEmployees();
   };
   displayEmployees = (shouldDisplay = true) => {
     shouldDisplay = localStorage.getItem("shouldDisplay") === "true";
     if (shouldDisplay) {
-      displayEmployeesFunction(this.employees);
+      displayEmployeesFunction(this.employees, this);
+      attachRightClickHandler("employeesTable", this);
     }
   };
+  handleContextMenuClick() {
+    attachRightClickHandler("employeesTable", this);
+  }
+  setup() {
+    this.displayEmployees();
+    this.handleContextMenuClick();
+  }
 }
 
 (() => {
   document.addEventListener("DOMContentLoaded", () => {
     const app = new App();
+    app.setup();
     const { addEmployee, removeEmployee, editEmployee, displayEmployees } = app;
 
     // Get references to the select element and the form container
@@ -104,16 +115,23 @@ class App {
     });
 
     // Function to append the appropriate form based on the selected option
-    const appendForm = selectedOption => {
+    const appendForm = (selectedOption, employeeName = "") => {
+      formContainer.innerHTML = "";
       switch (selectedOption) {
         case "1":
           formContainer.appendChild(generateAddEmployeeForm(addEmployee));
+          window.dispatchEvent(new CustomEvent("formAppended"));
           break;
         case "2":
           formContainer.appendChild(generateRemoveEmployeeForm(removeEmployee));
+          window.dispatchEvent(new CustomEvent("formAppended"));
           break;
         case "3":
-          formContainer.appendChild(generateEditEmployeeForm(editEmployee));
+          formContainer.appendChild(
+            generateEditEmployeeForm(editEmployee, employeeName)
+          );
+          // Dispatch a custom event after the form is appended to the DOM
+          window.dispatchEvent(new CustomEvent("formAppended"));
           break;
         case "4":
           formContainer.appendChild(
@@ -132,6 +150,33 @@ class App {
       selectElement.value = storedOption;
       appendForm(storedOption);
     }
+
+    // Listen for the editEmployee event
+    window.addEventListener("editEmployee", e => {
+      // Call appendForm with the "edit" option and the employee name
+      appendForm("3", e.detail.employeeName, true);
+
+      // After the 'editEmployeeForm' is added to the DOM, set the focus to the 'inputPayRate' field
+      requestAnimationFrame(() => {
+        const inputPayRate = document.getElementById("payRate");
+        if (inputPayRate) {
+          inputPayRate.focus();
+        }
+      });
+    });
+
+    // Listen for the 'formAppended' event
+    window.addEventListener("formAppended", () => {
+      // Wait for the next frame to make sure the form is in the DOM
+      requestAnimationFrame(() => {
+        // Get the 'nameInput' field of the form
+        const nameInput = document.getElementById("name");
+        if (nameInput) {
+          // Set the focus to the 'nameInput' field
+          nameInput.focus();
+        }
+      });
+    });
 
     setCopyright("Employee Management App");
   });
