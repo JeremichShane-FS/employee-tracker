@@ -22,7 +22,6 @@ const employees = [
   new PartTime("Alex", 50, 8, 12),
   new Manager("Dan", 90, 65, 40),
   new Manager("Jill", 95, 70, 40),
-  new PartTime("Joe", 55, 8, 12),
 ];
 
 export default employees;
