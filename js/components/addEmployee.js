@@ -19,7 +19,7 @@ const addEmployeeFunction = (employees, displayEmployees) => {
     }
 
     const existingEmployeeIndex = employees.findIndex(
-      employee => employee.name === name
+      employee => employee.name.toLowerCase() === name
     );
     if (existingEmployeeIndex !== -1) {
       if (!employeeCounters[name]) {
