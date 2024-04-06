@@ -12,16 +12,6 @@ const employees = [
   new Manager("Mary", 55, 30, 40),
   new PartTime("Tom", 35, 8, 12),
   new Manager("Chris", 60, 35, 40),
-  new Manager("Phil", 65, 40, 40),
-  new PartTime("Pat", 40, 8, 12),
-  new Manager("Bill", 70, 45, 40),
-  new Manager("Cindy", 75, 50, 40),
-  new PartTime("Kim", 45, 8, 12),
-  new Manager("Steve", 80, 55, 40),
-  new Manager("Karen", 85, 60, 40),
-  new PartTime("Alex", 50, 8, 12),
-  new Manager("Dan", 90, 65, 40),
-  new Manager("Jill", 95, 70, 40),
 ];
 
 export default employees;
